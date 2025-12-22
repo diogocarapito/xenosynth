@@ -28,6 +28,9 @@ FREQ_MIN = 100.0
 FREQ_MAX = 2000.0
 AMP_MAX = 0.8
 
+def adc_to_freq(adc_val: int) -> float:
+    return FREQ_MIN + (adc_val / 1023.0) * (FREQ_MAX - FREQ_MIN)  # Map ADC value to full range
+
 def adc_poller():
     global _smoothed_freq, _smoothed_amp, _smoothed_base, _smoothed_decay, _running
     _smoothed_decay = 2.0  # Assign _smoothed_decay explicitly
