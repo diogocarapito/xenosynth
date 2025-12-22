@@ -8,7 +8,7 @@ from luma.oled.device import sh1106
 from PIL import Image, ImageDraw, ImageFont
 
 from utils.gpio import setup_spi, close_spi, read_adc
-from utils.calculations import adc_to_freq, adc_to_amp, adc_to_base, adc_to_decay
+from utils.calculations import adc_to_freq, adc_to_amp, adc_to_base
 from sutils.ound_engine import audio_callback
 
 # OLED setup
@@ -22,7 +22,7 @@ device.clear()
 _smoothed_freq = 440.0
 _smoothed_amp = 0.2
 _smoothed_base = 1.0
-_smoothed_decay = 2.0
+_smoothed_decay = 2.0  # Ensure _smoothed_decay is assigned
 _running = True
 FREQ_MIN = 100.0
 FREQ_MAX = 2000.0
@@ -30,6 +30,7 @@ AMP_MAX = 0.8
 
 def adc_poller():
     global _smoothed_freq, _smoothed_amp, _smoothed_base, _smoothed_decay, _running
+    _smoothed_decay = 2.0  # Assign _smoothed_decay explicitly
     _running = True  # Ensure _running is assigned
     while _running:
         raw_a = read_adc(0)  # Channel 0 for amplitude

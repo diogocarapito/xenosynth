@@ -19,7 +19,6 @@ sine_table = np.sin(2 * np.pi * np.arange(TABLE_SIZE) / TABLE_SIZE).astype(np.fl
 
 phase = 0.0
 def audio_callback(outdata, frames, time_info, status):
-    global phase
     step = (FREQ * TABLE_SIZE) / SAMPLE_RATE
     idxs = (phase + step * np.arange(frames)).astype(np.int64) % TABLE_SIZE
     samples = sine_table[idxs] * AMP

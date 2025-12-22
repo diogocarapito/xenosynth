@@ -8,10 +8,11 @@ black==23.9.1
 
 numpy
 sounddevice
-spidev
 PyAudio
 #adafruit-circuitpython-ssd1306
 luma.core
 luma.oled
 Pillow
-RPi.GPIO
+
+# spidev  ## install on Raspberry Pi
+# RPi.GPIO  ## install on Raspberry Pi
