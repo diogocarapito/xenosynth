@@ -19,7 +19,7 @@ font = ImageFont.load_default()
 device.clear()
 
 # Globals
-_smoothed_freq = 440.0 * 0.2
+_smoothed_freq = 110
 _smoothed_amp = 0.05
 _smoothed_base = 0.0
 _smoothed_decay = 1.0  # Ensure _smoothed_decay is assigned
@@ -34,12 +34,12 @@ def adc_poller():
     _running = True  # Ensure _running is assigned
     while _running:
         raw_a = read_adc(0)  # Channel 0 for amplitude
-        #raw_f = read_adc(1)  # Channel 1 for frequency
+        raw_f = read_adc(1)  # Channel 1 for frequency
         raw_b = read_adc(2)  # Channel 2 for base
         # Channels 3 and 4 are unused for now
 
         _smoothed_amp = adc_to_amp(raw_a)
-        #_smoothed_freq = adc_to_freq(raw_f)
+        _smoothed_freq = adc_to_freq(raw_f)  # Re-enable frequency updates
         _smoothed_base = adc_to_base(raw_b)
         
         print(f"Freq: {_smoothed_freq:.2f} Hz, Amp: {_smoothed_amp:.2f}, Base: {_smoothed_base:.2f}")
@@ -59,9 +59,9 @@ def main():
     
     def dynamic_audio_callback(outdata, frames, time_info, status):
         params = {
-            'freq': _smoothed_freq,
-            'amp': _smoothed_amp,
-            'base': _smoothed_base,
+            'freq': _smoothed_freq,  # Fetch latest frequency dynamically
+            'amp': _smoothed_amp,   # Fetch latest amplitude dynamically
+            'base': _smoothed_base, # Fetch latest base dynamically
             'decay': _smoothed_decay
         }
         audio_callback(outdata, frames, time_info, status, params)
