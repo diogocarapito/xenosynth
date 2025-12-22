@@ -3,7 +3,7 @@ FREQ_MAX = 2000.0
 AMP_MAX = 0.8
 
 def adc_to_freq(adc_val: int) -> float:
-    return FREQ_MIN + (adc_val / 1023.0) * (FREQ_MAX - FREQ_MIN)
+    return (FREQ_MIN + (adc_val / 1023.0) * (FREQ_MAX - FREQ_MIN)) * 0.66
 
 def adc_to_amp(adc_val: int) -> float:
     return (adc_val / 1023.0) * AMP_MAX
