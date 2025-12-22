@@ -56,14 +56,18 @@ def main():
     setup_spi()
     poller = threading.Thread(target=adc_poller, daemon=True)
     poller.start()
-    params = {
-        'freq': _smoothed_freq,
-        'amp': _smoothed_amp,
-        'base': _smoothed_base,
-        'decay': _smoothed_decay
-    }
+    
+    def dynamic_audio_callback(outdata, frames, time_info, status):
+        params = {
+            'freq': _smoothed_freq,
+            'amp': _smoothed_amp,
+            'base': _smoothed_base,
+            'decay': _smoothed_decay
+        }
+        audio_callback(outdata, frames, time_info, status, params)
+
     with sd.OutputStream(channels=1, samplerate=44100, blocksize=512, dtype='float32',
-                         callback=lambda outdata, frames, time_info, status: audio_callback(outdata, frames, time_info, status, params)):
+                         callback=dynamic_audio_callback):
         while True:
             time.sleep(0.2)
             show_wave_on_oled(_smoothed_freq, _smoothed_amp, _smoothed_base)
