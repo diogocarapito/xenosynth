@@ -30,18 +30,19 @@ AMP_MAX = 0.8
 
 def adc_poller():
     global _smoothed_freq, _smoothed_amp, _smoothed_base, _smoothed_decay, _running
+    _running = True  # Ensure _running is assigned
     while _running:
-        raw_f = read_adc(4)
-        raw_a = read_adc(0)
-        raw_b = read_adc(6)
-        raw_d = read_adc(7)
-        _smoothed_freq = adc_to_freq(raw_f)
+        raw_a = read_adc(0)  # Channel 0 for amplitude
+        raw_f = read_adc(1)  # Channel 1 for frequency
+        raw_b = read_adc(2)  # Channel 2 for base
+        # Channels 3 and 4 are unused for now
+
         _smoothed_amp = adc_to_amp(raw_a)
+        _smoothed_freq = adc_to_freq(raw_f)
         _smoothed_base = adc_to_base(raw_b)
-        _smoothed_decay = adc_to_decay(raw_d)
         time.sleep(0.01)
 
-def show_wave_on_oled(freq, amp, base):
+def show_wave_on_oled(freq, _, base):  # Remove unused 'amp' argument
     image = Image.new("1", (oled_width, oled_height))
     draw = ImageDraw.Draw(image)
     draw.text((0, 0), f"Freq: {int(freq)} Hz", font=font, fill=255)
@@ -69,14 +70,3 @@ if __name__ == "__main__":
     main()
 
 
-def adc_to_freq(adc_val: int) -> float:
-    return FREQ_MIN + (adc_val / 1023.0) * (FREQ_MAX - FREQ_MIN)
-
-def adc_to_amp(adc_val: int) -> float:
-    return (adc_val / 1023.0) * AMP_MAX
-
-def adc_to_base(adc_val: int) -> float:
-    return 1.0 + 3.0 * (adc_val / 1023.0)
-
-def adc_to_decay(adc_val: int) -> float:
-    return 1.2 + 2.8 * (adc_val / 1023.0)
