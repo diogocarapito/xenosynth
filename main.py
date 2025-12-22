@@ -19,7 +19,7 @@ font = ImageFont.load_default()
 device.clear()
 
 # Globals
-_smoothed_freq = 440.0
+_smoothed_freq = 440.0 * 0.66
 _smoothed_amp = 0.05
 _smoothed_base = 0.0
 _smoothed_decay = 1.0  # Ensure _smoothed_decay is assigned
