@@ -66,7 +66,7 @@ def main():
         }
         audio_callback(outdata, frames, time_info, status, params)
 
-    with sd.OutputStream(channels=1, samplerate=44100, blocksize=256, dtype='float32',
+    with sd.OutputStream(channels=1, samplerate=44100, blocksize=128, dtype='float32',
                          callback=dynamic_audio_callback):
         while True:
             time.sleep(0.2)
