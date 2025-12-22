@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 from utils.gpio import setup_spi, close_spi, read_adc
 from utils.calculations import adc_to_freq, adc_to_amp, adc_to_base
-from sutils.ound_engine import audio_callback
+from utils.sound_engine import audio_callback
 
 # OLED setup
 serial = i2c(port=1, address=0x3C)
