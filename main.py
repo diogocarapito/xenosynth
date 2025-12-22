@@ -21,8 +21,8 @@ device.clear()
 # Globals
 _smoothed_freq = 440.0
 _smoothed_amp = 0.2
-_smoothed_base = 1.0
-_smoothed_decay = 2.0  # Ensure _smoothed_decay is assigned
+_smoothed_base = 0.0
+#_smoothed_decay = 2.0  # Ensure _smoothed_decay is assigned
 _running = True
 FREQ_MIN = 100.0
 FREQ_MAX = 2000.0
@@ -62,7 +62,7 @@ def main():
             'freq': _smoothed_freq,
             'amp': _smoothed_amp,
             'base': _smoothed_base,
-            'decay': _smoothed_decay
+            #'decay': _smoothed_decay
         }
         audio_callback(outdata, frames, time_info, status, params)
 
