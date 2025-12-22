@@ -35,12 +35,12 @@ def adc_poller():
     while _running:
         raw_a = read_adc(0)  # Channel 0 for amplitude
         #raw_f = read_adc(1)  # Channel 1 for frequency
-        raw_b = read_adc(2)  # Channel 2 for base
+        #raw_b = read_adc(2)  # Channel 2 for base
         # Channels 3 and 4 are unused for now
 
         _smoothed_amp = adc_to_amp(raw_a)
         #_smoothed_freq = adc_to_freq(raw_f)
-        _smoothed_base = adc_to_base(raw_b)
+        #_smoothed_base = adc_to_base(raw_b)
         
         print(f"Freq: {_smoothed_freq:.2f} Hz, Amp: {_smoothed_amp:.2f}, Base: {_smoothed_base:.2f}")
         time.sleep(0.01)
