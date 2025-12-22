@@ -20,7 +20,7 @@ device.clear()
 
 # Globals
 _smoothed_freq = 440.0
-_smoothed_amp = 0.2
+_smoothed_amp = 0.05
 _smoothed_base = 0.0
 _smoothed_decay = 1.0  # Ensure _smoothed_decay is assigned
 _running = True
