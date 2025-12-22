@@ -41,6 +41,8 @@ def adc_poller():
         _smoothed_amp = adc_to_amp(raw_a)
         _smoothed_freq = adc_to_freq(raw_f)
         _smoothed_base = adc_to_base(raw_b)
+        
+        print(f"Freq: {_smoothed_freq:.2f} Hz, Amp: {_smoothed_amp:.2f}, Base: {_smoothed_base:.2f}")
         time.sleep(0.01)
 
 def show_wave_on_oled(freq, _, base):  # Remove unused 'amp' argument
