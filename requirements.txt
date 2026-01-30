@@ -8,6 +8,8 @@ black==23.9.1
 
 numpy
 sounddevice
+pyyaml
+
 PyAudio
 #adafruit-circuitpython-ssd1306
 luma.core

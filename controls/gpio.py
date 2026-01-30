@@ -3,12 +3,15 @@ import spidev
 
 spi = spidev.SpiDev()
 
+
 def setup_spi():
     spi.open(0, 0)
     spi.max_speed_hz = 1350000
 
+
 def close_spi():
     spi.close()
+
 
 def read_adc(channel: int) -> int:
     if not 0 <= channel <= 7:

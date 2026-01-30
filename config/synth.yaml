@@ -1,0 +1,11 @@
+voices: 4
+partials_per_voice: 16
+
+smoothed_freq: 110
+smoothed_amp: 0.05
+smoothed_base: 0.0
+smoothed_decay: 1.0
+
+freq_min: 100.0
+freq_max: 2000.0
+max_amplitude: 0.8
