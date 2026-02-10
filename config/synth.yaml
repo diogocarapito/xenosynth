@@ -1,5 +1,5 @@
 voices: 4
-partials_per_voice: 16
+partials_per_voice: 1#6
 
 smoothed_freq: 110
 smoothed_amp: 0.05
