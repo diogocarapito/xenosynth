@@ -29,7 +29,7 @@ FREQ_MAX = config_synth["freq_max"]
 AMP_MAX = config_synth["max_amplitude"]
 _running = True
 
-oled_width, oled_height, font, device = oled_setup()
+# oled_width, oled_height, font, device = oled_setup()
 
 
 def main():
@@ -58,17 +58,17 @@ def main():
         dtype="float32",
         callback=dynamic_audio_callback,
     ):
-        while True:
-            time.sleep(0.2)
-            show_wave_on_oled(
-                _smoothed_freq,
-                _smoothed_amp,
-                _smoothed_base,
-                oled_width,
-                oled_height,
-                font,
-                device,
-            )
+        # while True:
+        #     time.sleep(0.2)
+        #     show_wave_on_oled(
+        #         _smoothed_freq,
+        #         _smoothed_amp,
+        #         _smoothed_base,
+        #         oled_width,
+        #         oled_height,
+        #         font,
+        #         device,
+        #     )
     close_spi()
 
 
