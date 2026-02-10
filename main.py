@@ -1,8 +1,4 @@
-from audio.stream import start_audio
-from synth.engine import SynthEngine
-from controls.mapper import start_controls
-
-pylint: disable=E0401
+# pylint: disable=E0401
 
 import time
 import threading
