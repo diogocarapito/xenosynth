@@ -2,7 +2,7 @@ import time
 from luma.core.interface.serial import spi
 from luma.oled.device import sh1106
 from PIL import Image, ImageDraw, ImageFont
-from utils.gpio import setup_spi, close_spi  # your SPI helper
+from controls.gpio import setup_spi, close_spi  # your SPI helper
 
 def main():
     setup_spi()  # Initialize SPI (your function)
